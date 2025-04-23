@@ -1,6 +1,6 @@
 /******************************************************************
  *
- *   YOUR NAME / SECTION NUMBER
+ *   Michael Quiroga / 272-001
  *
  *   Note, additional comments provided throughout this source code
  *   is for educational purposes
@@ -103,8 +103,31 @@ public class Graph {
    */
   
   public int findRoot() {
+    // Step 1: Track incoming edge count
+    int[] incoming = new int[numVertices];
 
-    // ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME/SECTION AT TOP OF FILE
+    for (int src = 0; src < numVertices; src++) {
+      for (int dest : adjListArr[src]) {
+        incoming[dest]++;
+      }
+    }
+
+    // Step 2: Find nodes with no incoming edges
+    int rootIndex = -1;
+    int count = 0;
+
+    for (int i = 0; i < numVertices; i++) {
+      if (incoming[i] == 0) {
+        rootIndex = i;
+        count++;
+      }
+    }
+
+    // Step 3: Return root value if exactly one found
+    if (count == 1) {
+      return vertexValues.get(rootIndex);
+    }
+
     return -1;
-  } 
+  } // findRoot Method: Michael Quiroga
 }
